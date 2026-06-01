@@ -1,4 +1,4 @@
-# ⚡ React Railway Telemetry Dashboard
+# ⚡ React Telemetry Dashboard
 
 ## 🛠 Tech Stack
 
