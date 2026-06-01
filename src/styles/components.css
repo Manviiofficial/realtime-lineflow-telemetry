@@ -1,0 +1,333 @@
+/* components.css - Modern cards, grid, and chart section styles with enhanced interactivity and visuals */
+
+.chart-container {
+  background: var(--dark, #fff);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.1);
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  transition:
+    box-shadow 0.3s,
+    transform 0.3s;
+}
+.chart-container:hover {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  transform: translateY(-4px) scale(1.01);
+}
+.chart-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--secondary, #1976d2);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+}
+.chart-wrapper {
+  background: var(--dark-gray, #f5f7fa);
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.06);
+  padding: 1.5rem;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: chartFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes chartFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Enhancements Start --- */
+
+/* Card hover effect */
+.info-card,
+.chart-wrapper {
+  transition:
+    box-shadow 0.25s,
+    transform 0.18s;
+}
+.info-card:hover,
+.chart-wrapper:hover {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.16);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Animated chart loading effect */
+.chart-wrapper.loading::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+  border: 5px solid var(--secondary, #1976d2);
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Section divider */
+.section-divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--secondary, #1976d2) 0%,
+    #42a5f5 100%
+  );
+  opacity: 0.13;
+  margin: 2.5rem 0 2rem 0;
+  border-radius: 1px;
+}
+
+/* Accent highlight for important info */
+.accent {
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    var(--secondary, #1976d2) 0%,
+    #42a5f5 100%
+  );
+  padding: 0.2em 0.7em;
+  border-radius: 0.7em;
+  font-weight: 600;
+  font-size: 1.05em;
+  letter-spacing: 0.2px;
+  box-shadow: 0 2px 8px 0 rgba(25, 118, 210, 0.1);
+}
+
+/* Accent highlight for info */
+.info-item.accent {
+  color: var(--secondary, #1976d2);
+  font-weight: 700;
+  background: rgba(25, 118, 210, 0.07);
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  display: inline-block;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .chart-container,
+  .company-info {
+    max-width: 100%;
+  }
+  .info-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+  .stats-grid-2x2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+}
+@media (max-width: 600px) {
+  .chart-container,
+  .company-info {
+    padding: 0.75rem 0.5rem;
+  }
+  .info-card {
+    padding: 0.75rem 0.5rem;
+  }
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .stats-grid-2x2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .section-divider {
+    margin: 1rem 0 0.5rem 0;
+  }
+}
+@media (max-width: 400px) {
+  .chart-title,
+  .info-card-title {
+    font-size: 1.1rem;
+  }
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .chart-container,
+  .company-info {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+/* --- Enhancements End --- */
+
+.company-info {
+  background: var(--dark, #fff);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.1);
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 6px solid var(--secondary, #1976d2);
+  position: relative;
+  overflow: hidden;
+}
+.company-info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--secondary, #1976d2) 0%,
+    #42a5f5 100%
+  );
+  border-radius: 1.5rem 1.5rem 0 0;
+  opacity: 0.12;
+}
+.info-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--secondary, #1976d2);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.stats-grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  height: calc(100% - 2rem);
+  width: calc(100% - 2rem);
+}
+
+.chart-container-equal {
+  background: var(--dark, #fff);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition:
+    box-shadow 0.3s,
+    transform 0.3s;
+}
+
+.chart-container-equal:hover {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  transform: translateY(-4px) scale(1.01);
+}
+.info-card {
+  background: var(--dark-gray, #a9b4c5);
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.06);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  border-left: 4px solid var(--secondary, #1976d2);
+  transition:
+    box-shadow 0.3s,
+    transform 0.3s,
+    border-color 0.3s;
+  cursor: pointer;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--dark-gray, #f5f7fa) 80%,
+    #e3f2fd 100%
+  );
+}
+.info-card:hover {
+  box-shadow: 0 6px 24px 0 rgba(25, 118, 210, 0.13);
+  border-color: #42a5f5;
+  transform: translateY(-2px) scale(1.015);
+  background: linear-gradient(
+    135deg,
+    #e3f2fd 80%,
+    var(--dark-gray, #f5f7fa) 100%
+  );
+}
+.info-item {
+  font-size: 1rem;
+  color: #3b82f6; /* Tailwind's blue-500, a light blue */
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  transition: color 0.2s;
+}
+.info-card:hover .info-item {
+  color: var(--secondary, #1976d2);
+}
+.nav-tabs {
+  /* ...existing code... */
+}
+.nav-tab {
+  color: #2563eb !important; /* Tailwind blue-600 */
+  background: #e0f2fe; /* Tailwind blue-100 */
+  border: none;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 0.7em 1.5em;
+  border-radius: 1.2em 1.2em 0 0;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: -2px;
+}
+.nav-tab.active {
+  color: #fff !important;
+  background: #2563eb;
+  box-shadow: 0 2px 8px 0 rgba(25, 118, 210, 0.07);
+}
+.table-data-lightblue td,
+.table-data-lightblue th {
+  color: #3b82f6 !important;
+}
+
+/* --- Stat-card/info-card blue font color update for overview section --- */
+.info-card .info-item,
+.telemetry-card .info-item {
+  color: #1976d2 !important; /* Professional blue for all stat/info card content */
+}
+.info-card .info-item.accent,
+.telemetry-card .info-item.accent {
+  color: #1976d2 !important;
+  background: rgba(25, 118, 210, 0.07);
+}
+.info-card .info-item.text-green-600,
+.info-card .info-item.text-red-600,
+.info-card .info-item.text-blue-600 {
+  color: #1976d2 !important;
+}
